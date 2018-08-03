@@ -26,19 +26,17 @@ export default class CommentForm extends Component {
 	}
 
 	handleSubmit (values) {
-		alert("Hii Comment Info"+JSON.stringify(values));
+		this.toggalModal();
+		this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
 	}
 
 	render() {
 		return(
 			<div>
-				<Nav className="ml-auto" navbar>
-	                <NavItem>
-						<Button outline onClick={this.toggalModal}> Submit Comment
-							<span className="fas fa-pencil-alt"></span>
-						</Button>
-					</NavItem>
-            	</Nav>
+				<Button outline onClick={this.toggalModal}> Submit Comment
+					<span className="fas fa-pencil-alt"></span>
+				</Button>
+					
 				<Modal isOpen={this.state.isModalopen} toggle={this.toggleModal}>
 					<ModalHeader toggle={this.toggleModal}><strong>Submit Comment</strong></ModalHeader>
 					<ModalBody>
@@ -55,12 +53,12 @@ export default class CommentForm extends Component {
 							</Row>
 							<Row>
 								<Label htmlFor="name"><strong>Your Name</strong></Label>
-									<Control.text model=".firstname" name="firstname" className="form-control" 
-										placeholder="FirstName" validators={{required, minLength: minLength(3), maxLength: maxLength(15)}}
+									<Control.text model=".author" name="author" className="form-control" 
+										placeholder="Author" validators={{required, minLength: minLength(3), maxLength: maxLength(15)}}
 									/>
 									 <Errors
                                         className="text-danger"
-                                        model=".firstname"
+                                        model=".author"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
@@ -71,8 +69,8 @@ export default class CommentForm extends Component {
 							</Row>
 							<br/>
 							<Row>
-								<Label htmlFor="message"><strong>Comment</strong></Label>
-									<Control.textarea model=".message" name="message" rows="6"
+								<Label htmlFor="comment"><strong>Comment</strong></Label>
+									<Control.textarea model=".comment" name="comment" rows="6"
 									className="form-control"  />
 							</Row>
 							<br/>
