@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Navbar , NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent';
 import Contact from './ContactComponent';
 import Dishdetail from './DishdetailComponent';
@@ -26,11 +25,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Main extends Component {
-
-  constructor(props ) {
-    super(props);
-  }
-
   render() {
     const HomePage = () => {
       return (
@@ -58,7 +52,7 @@ class Main extends Component {
             <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
             <Route path="/menu/:dishId" component={DishWithId} />
             <Route exact path="/contactus" component={Contact} />
-            <Route path="/aboutus" component={() => <About leaders={this.props .leaders} />} />
+            <Route path="/aboutus" component={() => <About leaders={this.props.leaders} />} />
             <Redirect to="/home" /> 
           </Switch>
           <Footer />

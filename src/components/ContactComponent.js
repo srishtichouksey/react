@@ -1,6 +1,6 @@
 import React from 'react';
-import {Button, Form, FormGroup, Label, Input, Col, Row} from 'reactstrap'; 
-import react, { Component } from 'react';
+import {Button, Label ,Col, Row} from 'reactstrap'; 
+import { Component } from 'react';
 import { Control, LocalForm, Errors} from 'react-redux-form';
 
 const required = (val) => val && val.length;

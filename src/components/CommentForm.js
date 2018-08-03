@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, Row, Label, Col , Nav, NavItem} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, Row, Label} from 'reactstrap';
 import { LocalForm, Errors, Control} from 'react-redux-form';
 
 const required = (val) => val && val.length;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Card, CardTitle, CardBody, CardText, Breadcrumb, BreadcrumbItem, Button} from 'reactstrap';
+import React from 'react';
+import { Card, CardTitle, CardBody, CardText, Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import CommentForm from './CommentForm';
 
@@ -57,7 +57,7 @@ const Dishdetail = (props) => {
 			</div>
 		);
 	} else {
-		return <div>Please select dish to see the details</div>
+		return <div><strong>Please select dish to see the details</strong></div>
 	}
 }
 
