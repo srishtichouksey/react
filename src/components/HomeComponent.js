@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, CardImg, CardText,CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import  {Loading} from './LoadingComponent';
 
-function RenderCard({item, isloading , errMess}) {
-    if (isloading) {
+function RenderCard({item, isLoading , errMess}) {
+    if (isLoading) {
         return(
             <Loading />
         );
@@ -38,7 +38,7 @@ function Home(props) {
 					<RenderCard item={props.promotion} />
 				</div>
 				<div className="col-12 col-md m-1">
-					<RenderCard item={props.leaders} />
+					<RenderCard item={props.leader} />
 				</div>
 			</div>
 		</div>
