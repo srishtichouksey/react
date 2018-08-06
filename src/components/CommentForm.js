@@ -27,7 +27,7 @@ export default class CommentForm extends Component {
 
 	handleSubmit (values) {
 		this.toggalModal();
-		this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+		this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
 	}
 
 	render() {
@@ -74,8 +74,8 @@ export default class CommentForm extends Component {
 									className="form-control"  />
 							</Row>
 							<br/>
-							<Row className="form-group">						
-                                    <Button type="submit" color="primary">Submit</Button>
+							<Row className="form-group">
+								<Button type="submit" color="primary">Submit</Button>
 							</Row>
 						</LocalForm>
 					</ModalBody>
