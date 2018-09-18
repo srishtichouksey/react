@@ -8,7 +8,7 @@ import Home from './HomeComponent';
 import About from './AboutComponent';
 import { Switch , Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment, fetchDishes, fetchComments, fetchPromos, fetchleaders } from '../redux/ActionCreators';
+import { postComment, fetchDishes, fetchComments, fetchPromos, fetchleaders, postFeedback } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -20,6 +20,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
+  postFeedback:(firstname, lastname,  agree,telnum, email, contact_type, message) => dispatch(postFeedback(firstname, lastname,  agree,telnum, email, contact_type, message)),
   postComment:(dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
   fetchDishes: () => {dispatch(fetchDishes())},
   fetchPromos: () => {dispatch(fetchPromos())},
@@ -30,12 +31,23 @@ const mapDispatchToProps = (dispatch) => ({
 class Main extends Component {
 
   componentDidMount() {
+    console.log("HII Render is done and I am here");
     this.props.fetchDishes();
     this.props.fetchPromos();
     this.props.fetchComments();
     this.props.fetchleaders(); 
   }
+
+  shouldComponentUpdate() {
+    console.log('Is shouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('I am calling third parties libraries');
+  }
   render() {
+      console.log("Hi i am called after shouldComponentUpdate");
      const HomePage = () => {
         return(
             <Home 
@@ -72,8 +84,8 @@ class Main extends Component {
             <Route  path="/home" component={HomePage} />
             <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
             <Route path="/menu/:dishId" component={DishWithId} />
-            <Route exact path="/contactus" component={Contact} />
-            <Route path="/aboutus" component={() => <About leaders={this.props.leaders} />} />
+            <Route exact path="/contactus" component={() => <Contact postFeedback = {this.props.postFeedback} />} />
+            <Route path="/aboutus" component={() => <About leaders={this.props.leaders.leaders} />} />
             <Redirect to="/home" /> 
           </Switch>
           <Footer />
