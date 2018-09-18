@@ -108,7 +108,7 @@ export const addComments = (comments) => ({
 export const fetchPromos = () => (dispatch) => {
 	dispatch(promosLoading());
 	
-	return fetch(baseUrl + 'dishes')
+	return fetch(baseUrl + 'promotions')
 		.then(response => {
 	    	if(response.ok) {
 	    		return response;
