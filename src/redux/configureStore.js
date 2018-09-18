@@ -3,8 +3,8 @@ import { Dishes } from './dishes';
 import { Comments } from './comments';
 import { Promotions } from './promotions';
 import { Leaders } from './leaders';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import thunk from 'redux-thunk';  /*It is a middleware*/
+import logger from 'redux-logger'; /*It is a middleware*/
 
 /* It returns a store it accept parameterts reducer  and initialState */
 export const ConfigureStore = () => {
@@ -15,8 +15,7 @@ export const ConfigureStore = () => {
 			leaders : Leaders,
 			promotions  : Promotions
 		}),
-		applyMiddleware(thunk, logger)
+		applyMiddleware(thunk, logger)     /*work as inhancer*/
 	);
-
 	return store;
 }

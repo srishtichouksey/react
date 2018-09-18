@@ -5,7 +5,6 @@ export const Comments =(state = {
 		comments: []
 	}, action) => {
 	switch (action.type) {
-
 		case Actiontypes.ADD_COMMENTS:
 			return {...state, errMess:null, comments:action.payload};
 
@@ -15,8 +14,7 @@ export const Comments =(state = {
 		case Actiontypes.ADD_COMMENT:
 			var comment = action.payload;
 			return {...state, comments:state.comments.concat(comment)};
-
-		default : 
+		default :
 			return state;
 	}
 }
